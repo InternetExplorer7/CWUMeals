@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Buy from './components/Buy';
 import Sell from './components/Sell';
 import Faq from './components/Faq';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class App extends Component {
   render() {
@@ -19,10 +19,6 @@ class App extends Component {
       </BrowserRouter>
     )
   }
-}
-
-Component.PropTypes = {
-  
 }
 
 export default App;

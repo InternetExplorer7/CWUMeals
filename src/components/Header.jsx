@@ -5,13 +5,13 @@ import FlatButton from 'material-ui/FlatButton';
 export default class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        var elState = {
             buy: 'white',
             sell: 'white',
             faq: 'white'
         }
-        const current = props.current;
-        this.state[current] = 'rgb(0,188,212)';
+        elState[props.current] = 'rgb(0,188,212)';
+        this.state = elState;
     }
     render() {
         return (
