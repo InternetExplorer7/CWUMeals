@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import {TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
-
+import PropTypes from 'prop-types';
 export default class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            underline: 'buy'
+        }
+    }
     render() {
         return (
-            <TableHeader>
-                <TableRow>
-                    <TableHeaderColumn>ID</TableHeaderColumn>
-                    <TableHeaderColumn>Points to sell</TableHeaderColumn>
-                    <TableHeaderColumn>Price per point</TableHeaderColumn>
-                </TableRow>
-            </TableHeader>
+            <h2>FS</h2>
         )
     }
+}
+
+Header.PropTypes = {
+    underline:PropTypes.string.isRequired,
 }
