@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import { browserHistory } from 'react-router';
+import Mailto from 'react-mailto'
 
 export default class Buy extends Component {
 
@@ -10,6 +12,7 @@ export default class Buy extends Component {
             posts: []
         }
         this.getListOfItems = this.getListOfItems.bind(this);
+        // this.cellClicked = this.cellClicked.bind(this);
         this.getListOfItems();
     }
 
@@ -39,7 +42,7 @@ export default class Buy extends Component {
         })
         const list = this.state.posts.map((document, i) => {
             return (<TableRow key={i}>
-                <TableRowColumn>{document.email}</TableRowColumn>
+                <TableRowColumn><Mailto email={document.email} obfuscate={true}>Email me!</Mailto></TableRowColumn>
                 <TableRowColumn>{document.amount}</TableRowColumn>
                 <TableRowColumn>$0.{document.price}</TableRowColumn>
             </TableRow>)
@@ -62,4 +65,9 @@ export default class Buy extends Component {
             </div>
         )
     }
+
+    // cellClicked(row, col) {
+    //     const rowData = this.state.posts[row];
+    //     this.props.history.push('');
+    // }
 }
