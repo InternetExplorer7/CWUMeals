@@ -81,7 +81,7 @@ export default class Sell extends Component {
     }
 
     makeSellPost() {
-        fetch('https://d15c8e70.ngrok.io/cwu', {
+        fetch('https://khorram.herokuapp.com/cwu', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

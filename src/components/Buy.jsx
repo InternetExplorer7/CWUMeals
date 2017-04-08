@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import { browserHistory } from 'react-router';
 import Mailto from 'react-mailto'
 
 export default class Buy extends Component {
@@ -21,7 +20,7 @@ export default class Buy extends Component {
     }
 
     getListOfItems() {
-        fetch('https://d15c8e70.ngrok.io/get/cwu/posts', {
+        fetch('https://khorram.herokuapp.com/get/cwu/posts', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -44,7 +43,7 @@ export default class Buy extends Component {
             return (<TableRow key={i}>
                 <TableRowColumn><Mailto email={document.email} obfuscate={true}>Email me!</Mailto></TableRowColumn>
                 <TableRowColumn>{document.amount}</TableRowColumn>
-                <TableRowColumn>$0.{document.price}</TableRowColumn>
+                <TableRowColumn>${document.price}</TableRowColumn>
             </TableRow>)
         })
         return (
