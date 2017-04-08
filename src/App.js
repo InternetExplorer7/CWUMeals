@@ -1,51 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
-import Avatar from 'material-ui/Avatar';
-import {List, ListItem} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
-import Divider from 'material-ui/Divider';
-import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
-
+import { BrowserRouter, Route } from 'react-router-dom';
+import Buy from './components/Buy';
+import Sell from './components/Sell';
+import Faq from './components/Faq';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      <List>
-            <Subheader>Recent chats</Subheader>
-            <ListItem
-              primaryText="Brendan Lim"
-              leftAvatar={<Avatar src="images/ok-128.jpg" />}
-              rightIcon={<CommunicationChatBubble />}
-            />
-            <ListItem
-              primaryText="Eric Hoffman"
-              leftAvatar={<Avatar src="images/kolage-128.jpg" />}
-              rightIcon={<CommunicationChatBubble />}
-            />
-            <ListItem
-              primaryText="Grace Ng"
-              leftAvatar={<Avatar src="images/uxceo-128.jpg" />}
-              rightIcon={<CommunicationChatBubble />}
-            />
-            <ListItem
-              primaryText="Kerem Suer"
-              leftAvatar={<Avatar src="images/kerem-128.jpg" />}
-              rightIcon={<CommunicationChatBubble />}
-            />
-            <ListItem
-              primaryText="Raquel Parrado"
-              leftAvatar={<Avatar src="images/raquelromanp-128.jpg" />}
-              rightIcon={<CommunicationChatBubble />}
-            />
-          </List>
-      </div>
-    );
+      <BrowserRouter>
+        <div>
+          <Route exact={true} path="/" component={Buy}/>
+          <Route path="/buy" component={Buy}/>
+          <Route path="/sell" component={Sell}/>
+          <Route path="/faq" component={Faq}/> 
+        </div>
+      </BrowserRouter>
+    )
   }
+}
 
-  handleChange() {
-    console.log('Changed...');
-  }
+Component.PropTypes = {
+  
 }
 
 export default App;
