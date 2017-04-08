@@ -22,3 +22,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.buySellFaqList {
+  text-align: center;
+}
+
+.sell {
+  padding-top: 45px;
+  max-width: 400px;
+}

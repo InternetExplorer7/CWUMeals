@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 export default class Faq extends Component {
     render() {
-        return (<h2>Faq!</h2>)
+        return (
+            <Header current="faq"/>
+        )
     }
 }

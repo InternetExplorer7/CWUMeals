@@ -6,7 +6,7 @@ export default class Buy extends Component {
     render() {
         return (
             <div>
-                <Header/>
+                <Header current={'buy'}/>
                 <Table>
                     <TableHeader>
                     <TableRow>
@@ -18,23 +18,23 @@ export default class Buy extends Component {
                     <TableBody>
                     <TableRow>
                         <TableRowColumn>1</TableRowColumn>
-                        <TableRowColumn>John Smith</TableRowColumn>
-                        <TableRowColumn>Employed</TableRowColumn>
+                        <TableRowColumn>250</TableRowColumn>
+                        <TableRowColumn>$0.26</TableRowColumn>
                     </TableRow>
                     <TableRow>
                         <TableRowColumn>2</TableRowColumn>
-                        <TableRowColumn>Randal White</TableRowColumn>
-                        <TableRowColumn>Unemployed</TableRowColumn>
+                        <TableRowColumn>90</TableRowColumn>
+                        <TableRowColumn>$0.20</TableRowColumn>
                     </TableRow>
                     <TableRow>
                         <TableRowColumn>3</TableRowColumn>
-                        <TableRowColumn>Stephanie Sanders</TableRowColumn>
-                        <TableRowColumn>Employed</TableRowColumn>
+                        <TableRowColumn>120 Sanders</TableRowColumn>
+                        <TableRowColumn>$0.20</TableRowColumn>
                     </TableRow>
                     <TableRow>
                         <TableRowColumn>4</TableRowColumn>
-                        <TableRowColumn>Steve Brown</TableRowColumn>
-                        <TableRowColumn>Employed</TableRowColumn>
+                        <TableRowColumn>140</TableRowColumn>
+                        <TableRowColumn>$0.19</TableRowColumn>
                     </TableRow>
                     </TableBody>
                 </Table>
