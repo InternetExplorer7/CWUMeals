@@ -40,8 +40,10 @@ export default class Buy extends Component {
             return current.price - next.price;
         })
         const list = this.state.posts.map((document, i) => {
+            var FacebookLink = 'https://facebook.com/' + document.fbid;
             return (<TableRow key={i}>
-                <TableRowColumn><Mailto email={document.email} obfuscate={true}>Email me!</Mailto></TableRowColumn>
+                <TableRowColumn><img className="img-circle" src={document.profilepic}/></TableRowColumn>
+                <TableRowColumn><a href={FacebookLink}>Message me on Facebook!</a></TableRowColumn>
                 <TableRowColumn>{document.amount}</TableRowColumn>
                 <TableRowColumn>${document.price}</TableRowColumn>
             </TableRow>)
@@ -52,7 +54,8 @@ export default class Buy extends Component {
                 <Table>
                     <TableHeader>
                     <TableRow>
-                        <TableHeaderColumn>CWU Email</TableHeaderColumn>
+                        <TableHeaderColumn>Profile picture</TableHeaderColumn>
+                        <TableHeaderColumn>Contact</TableHeaderColumn>
                         <TableHeaderColumn>Points Available</TableHeaderColumn>
                         <TableHeaderColumn>Price/Point</TableHeaderColumn>
                     </TableRow>

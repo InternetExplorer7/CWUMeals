@@ -4,22 +4,27 @@ import TextField from 'material-ui/TextField';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
+import FacebookLogin from 'react-facebook-login';
 
 export default class Sell extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'amount': '',
-            'price': '',
-            'email': '',
+            amount: '',
+            price: '',
+            email: '',
             open: false,
-            message: ''
+            message: '',
+            disabledOpen: true,
+            facebookData: {}
+
         }
         this.updateAmount = this.updateAmount.bind(this);
         this.updatePrice = this.updatePrice.bind(this);
         this.updateEmail = this.updateEmail.bind(this);
         this.makeSellPost = this.makeSellPost.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.responseFacebook = this.responseFacebook.bind(this);
     }
     render() {
         const actions = [
@@ -54,7 +59,15 @@ export default class Sell extends Component {
                             <br/>
                             <TextField onChange={this.updateEmail} hintText="CWU E-mail"/>
                             <br/>
-                            <FlatButton onTouchTap={this.makeSellPost} label="submit" backgroundColor={'rgb(0,188,212'}/>
+                            <FacebookLogin
+                                appId="423311558018987"
+                                autoLoad={false}
+                                fields="name,email,picture, id, link"
+                                callback={this.responseFacebook}
+                            />
+                            <br />
+                            <br />
+                            <FlatButton disabled={this.state.disabledOpen} onTouchTap={this.makeSellPost} label="submit" backgroundColor={'rgb(0,188,212'}/>
                         </CardText>
                     </Card>
                 </div>
@@ -105,6 +118,14 @@ export default class Sell extends Component {
     handleClose() {
         this.setState({
             open: false
+        })
+    }
+
+    responseFacebook(response) {
+        console.log('rFacebook: ' + JSON.stringify(response));
+        this.setState({
+            disabledOpen: !this.state.disabledOpen,
+            facebookData: response
         })
     }
 }
