@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import Mailto from 'react-mailto'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+// import Mailto from 'react-mailto'
 
 export default class Buy extends Component {
 
     constructor() {
         super();
         this.state = {
-            posts: []
+            posts: [],
+            calculation: 'Press a row to get calculations.'
         }
         this.getListOfItems = this.getListOfItems.bind(this);
-        // this.cellClicked = this.cellClicked.bind(this);
+        this.cellClicked = this.cellClicked.bind(this);
         this.getListOfItems();
     }
 
@@ -42,7 +44,7 @@ export default class Buy extends Component {
         const list = this.state.posts.map((document, i) => {
             var FacebookLink = 'https://facebook.com/' + document.fbid;
             return (<TableRow key={i}>
-                <TableRowColumn><img className="img-circle" src={document.profilepic}/></TableRowColumn>
+                <TableRowColumn><img alt="Facebook Profile Image" className="img-circle" src={document.profilepic}/></TableRowColumn>
                 <TableRowColumn><a href={FacebookLink}>Message me on Facebook!</a></TableRowColumn>
                 <TableRowColumn>{document.amount}</TableRowColumn>
                 <TableRowColumn>${document.price}</TableRowColumn>
@@ -51,7 +53,7 @@ export default class Buy extends Component {
         return (
             <div>
                 <Header current={'buy'}/>
-                <Table>
+                <Table onCellClick={this.cellClicked}>
                     <TableHeader>
                     <TableRow>
                         <TableHeaderColumn>Profile picture</TableHeaderColumn>
@@ -64,12 +66,26 @@ export default class Buy extends Component {
                         {list}
                     </TableBody>
                 </Table>
+                <br/>
+                <Card>
+                    <CardHeader
+                        title="Calculated cost"
+                        subtitle="Total cost for a row"
+                        actAsExpander={false}
+                    />
+                    <CardText expandable={false}>
+                        {this.state.calculation}
+                    </CardText>
+                </Card>
             </div>
         )
     }
 
-    // cellClicked(row, col) {
-    //     const rowData = this.state.posts[row];
-    //     this.props.history.push('');
-    // }
+    cellClicked(row, col) {
+        const rowData = this.state.posts[row];
+        const calculation = 
+        this.setState({
+            calculation: ('To buy all of ' + rowData.name.split(' ')[0] + '\'s available points (' + rowData.amount + ' points) at $' + rowData.price + ' per point, the total cost would be about $' + Math.round(rowData.amount * rowData.price))
+        })
+    }
 }
